@@ -16,4 +16,12 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    # One to Many
+    # Post has many Categories
+    # To get all the categories under a post but only the IDs
+    public function categoryPost()
+    {
+        return $this->hasMany(CategoryPost::class);
+    }
 }
