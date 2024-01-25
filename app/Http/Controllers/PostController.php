@@ -69,4 +69,13 @@ class PostController extends Controller
         # 4. Go back to homepage
         return redirect()->route('index');
     }
+
+    // show() - view the Show Post Page
+    public function show($id)
+    {
+        $post = $this->post->findOrFail($id);
+
+        return view('users.posts.show')
+                ->with('post', $post);
+    }
 }

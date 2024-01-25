@@ -2,3 +2,23 @@
 .icon-sm {
     font-size: 2rem;
 }
+
+/* delete post (modal) */
+.image-lg {
+    width: 9rem;
+    height: 9rem;
+    object-fit: cover;
+}
+
+/* Like button */
+.fa-heart {
+    font-size: 1.5rem;
+}
+
+/* EXTRA SMALL FONT SIZE */
+/* data - body.blade.php */
+/* date, delete - comments.blade.php */
+/* date - post/show.blade.php */
+.xsmall {
+    font-size: 0.65rem;
+}
