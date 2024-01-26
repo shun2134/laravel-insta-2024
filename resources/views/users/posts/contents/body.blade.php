@@ -8,7 +8,7 @@
 {{-- card-body --}}
 <div class="card-body">
     {{-- heart button + No. likes + categories --}}
-    <div class="row align-items-cneter">
+    <div class="row align-items-center">
         {{-- heart button --}}
         <div class="col-auto">
             <form action="#" method="post">
@@ -36,7 +36,7 @@
         {{-- owner + description --}}
         <a href="#" class="text-decoration-none text-dark fw-bold">
             {{ $post->user->name }}
-        </a>
+        </a> 
         &nbsp;
         <p class="d-inline fw-light">{{ $post->description }}</p>
         <p class="text-uppercase text-muted xsmall">{{ date('M d, Y', strtotime($post->created_at)) }}</p>

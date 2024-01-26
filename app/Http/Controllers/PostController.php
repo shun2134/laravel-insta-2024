@@ -78,4 +78,35 @@ class PostController extends Controller
         return view('users.posts.show')
                 ->with('post', $post);
     }
+
+    // edit() - view the Edit Post Page
+    public function edit($id)
+    {
+        $post = $this->post->findOrFail($id);
+
+        # If the Auth user is NOT the owner of the post, redirect to homepage
+        if (Auth::user()->id != $post->user_id){
+            return redirect()->route('index');
+        }
+
+        $all_categories = $this->category->all();
+
+        # Get all the category IDs of this post. Save in an array
+        $selected_categories = [];
+        foreach ($post->categoryPost as $category_post){
+            $selected_categories[] = $category_post->category_id;
+            /*
+                $selected_categories = [
+                    [1],
+                    [3]
+                ];
+            */ 
+        }
+
+        return view('users.posts.edit')
+                ->with('post', $post) // 'post' holds the record of the post
+                ->with('all_categories', $all_categories) // 'all_categories' holds all(6) categories
+                ->with('selected_categories', $selected_categories); // 'selected_categories' holds the value inside of the 2D Associative Array which are the categories of the post
+    }
+
 }
