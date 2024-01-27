@@ -109,4 +109,59 @@ class PostController extends Controller
                 ->with('selected_categories', $selected_categories); // 'selected_categories' holds the value inside of the 2D Associative Array which are the categories of the post
     }
 
+    // update() - save the changes of the post
+    public function update(Request $request, $id)
+    {
+        # 1. Validate the data from the form
+        $request->validate([
+            'category'      => 'required|array|between:1,3',
+            'description'   => 'required|min:1|max:1000',
+            'image'         => 'mimes:jpg,png,jpeg,gif|max:1048'
+        ]);
+
+        # 2. Update the post
+        $post               = $this->post->findOrFail($id);
+        $post->description  = $request->description;
+
+        // If there is a new image...
+        if($request->image){
+            $post->image = 'data:image/' . $request->image->extension() . ';base64,' . base64_encode(file_get_contents($request->image));
+        }
+        
+        $post->save();
+
+                # 3. Delete all records from categoryPost related to this post
+                $post->categoryPost()->delete();
+
+                # 4. Save the new categories to category_post pivot table
+                foreach ($request->category as $category_id){
+                    $category_post[] = [
+                        'category_id' => $category_id
+                    ];
+                    
+                    /*
+                        $category_post = [
+                            ['category_id' => 1],
+                            ['category_id' => 3]
+                        ];
+                    */ 
+                }
+                $post->categoryPost()->createMany($category_post);
+                /*
+                        $category_post = [
+                            ['post_id' => 2, 'category_id' => 1],
+                            ['post_id' => 2, 'category_id' => 3]
+                        ];
+                */    
+                return redirect()->route('post.show', $id);
+            }
+
+    // destroy() - delete the post from db
+    public function destroy($id)
+    {
+        $this->post->destroy($id);
+
+        return redirect()->route('index');
+    }
+    
 }

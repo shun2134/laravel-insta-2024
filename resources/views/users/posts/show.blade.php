@@ -98,7 +98,8 @@
                                 </div>
                             @endforeach
                         </div>
-                
+                    </div> 
+                    
                         {{-- owner + description --}}
                         <a href="#" class="text-decoration-none text-dark fw-bold">
                             {{ $post->user->name }}
@@ -108,9 +109,26 @@
                         <p class="text-uppercase text-muted xsmall">{{ date('M d, Y', strtotime($post->created_at)) }}</p>
                 
                         {{-- comment form here --}}
-
-                    </div>
-                </div>     
+                        <div class="mt-4">
+                            <form action="{{ route('comment.store', $post->id) }}" method="post">
+                                @csrf
+                        
+                                <div class="input-group">
+                                    <textarea name="comment_body{{ $post->id }}" rows="1" class="form-control form-control-sm bg-white" placeholder="Add a comment...">{{ old('comment_body' . $post->id) }}</textarea>
+                                    <button type="submit" class="btn btn-outline-secondary btn-sm">Post</button>
+                                </div>
+                                {{-- Error --}}
+                                @error('comment_body' . $post->id)
+                                    <div class="text-danger small">{{ $message }}</div>
+                                @enderror              
+                            </form>        
+                            {{-- Show all comments here --}}
+                            @if ($post->comment->isNotEmpty())
+                                
+                            @endif
+                            
+                        </div>
+                </div>    
 
             </div>
         </div>

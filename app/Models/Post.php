@@ -24,4 +24,10 @@ class Post extends Model
     {
         return $this->hasMany(CategoryPost::class);
     }
+
+    # To get all the comments of a post
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
