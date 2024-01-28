@@ -42,4 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    # To get all the posts of a user
+    public function posts()
+    {
+        return $this->hasMany(Post::class)->latest();
+    }
 }

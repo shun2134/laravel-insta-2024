@@ -87,7 +87,7 @@
                                     {{-- [SOON] Admin Controls --}}
 
                                     {{-- Profile --}}
-                                    <a href="#" class="dropdown-item">
+                                    <a href="{{ route('profile.show', Auth::user()->id) }}" class="dropdown-item">
                                         <i class="fa-solid fa-circle-user"></i> Profile
                                     </a>
 

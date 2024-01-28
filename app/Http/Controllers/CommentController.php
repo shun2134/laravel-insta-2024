@@ -36,4 +36,12 @@ class CommentController extends Controller
         return redirect()->back();
     }
 
+    // destroy() - delete or remove the comment
+    public function destroy($id)
+    {
+        $this->comment->destroy($id);
+
+        return redirect()->back();
+    }
+
 }

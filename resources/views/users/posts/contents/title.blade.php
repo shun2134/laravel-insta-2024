@@ -2,15 +2,17 @@
     <div class="row align-items-center">
         {{-- avatar --}}
         <div class="col-auto">
-            @if ($post->user->avatar)
-                <img src="#" alt="{{ $post->user->name }}" class="rounded-circle avatar-sm">
-            @else
-                <i class="fa-solid fa-circle-user text-secondary icon-sm"></i>
-            @endif
+            <a href="{{ route('profile.show', $post->user->id) }}">
+                @if ($post->user->avatar)
+                    <img src="#" alt="{{ $post->user->name }}" class="rounded-circle avatar-sm">
+                @else
+                    <i class="fa-solid fa-circle-user text-secondary icon-sm"></i>
+                @endif
+            </a>
         </div>
         {{-- name --}}
         <div class="col ps-0">
-            <a href="#" class="text-decoration-none text-dark">
+            <a href="{{ route('profile.show', $post->user->id) }}" class="text-decoration-none text-dark">
                 {{ $post->user->name }}
             </a>
         </div>

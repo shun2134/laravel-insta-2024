@@ -3,6 +3,11 @@
     font-size: 2rem;
 }
 
+/* Large */
+.icon-lg {
+    font-size: 9rem;
+}
+
 /* delete post (modal) */
 .image-lg {
     width: 9rem;
@@ -23,3 +28,9 @@
     font-size: 0.65rem;
 }
 
+/* Show posts at Profile page */
+.grid-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
