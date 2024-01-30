@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -30,4 +31,17 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    # To get all the likes of a post
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    # Returns TRUE if the Auth user already liked the post
+    public function isLiked()
+    {
+        return $this->likes()->where('user_id', Auth::user()->id)->exists();
+    }
+
 }

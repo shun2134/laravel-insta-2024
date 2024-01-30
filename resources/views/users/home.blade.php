@@ -28,8 +28,28 @@
         </div>
         
         {{-- PROFILE OVERVIEW + SUGGESTIONS --}}
-        <div class="col-4 bg-secondary">
-            PROFILE OVERVIEW + SUGGESTIONS
+        <div class="col-4">
+            {{-- PROFILE OVERVIEW --}}
+            <div class="row align-items-center mb-5 bg-white shadow-sm rounded-3 py-3">
+                {{-- avatar --}}
+                <div class="col-auto">
+                    <a href="{{ route('profile.show', Auth::user()->id) }}">
+                        @if (Auth::user()->avatar)
+                            <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}" class="rounded-circle avatar-md">
+                        @else
+                            <i class="fa-solid fa-circle-user text-secondary icon-md"></i>
+                        @endif
+                    </a>
+                </div>
+
+                {{-- name & email --}}
+                <div class="col ps-0">
+                    <a href="{{ route('profile.show', Auth::user()->id) }}" class="text-decoration-none text-dark fw-bold">{{ Auth::user()->name }}</a>
+                    <p class="text-muted mb-0">{{ Auth::user()->email }}</p>
+                </div>
+            </div>
         </div>
+
+    
     </div>
 @endsection

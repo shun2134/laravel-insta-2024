@@ -4,6 +4,7 @@
 }
 
 /* Large */
+/* profile icon */
 .icon-lg {
     font-size: 9rem;
 }
@@ -31,6 +32,32 @@
 /* Show posts at Profile page */
 .grid-img {
     width: 100%;
-    height: 300px;
+    height: 250px;
     object-fit: cover;
+}
+
+/* Profile avatar */
+.avatar-lg {
+    width: 9rem;
+    height: 9rem;
+    object-fit: cover;
+}
+
+/* Nav Avatar */
+.avatar-sm {
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+}
+
+/* Profile Overview - avatar */
+.avatar-md {
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: cover;
+}
+
+/* Profile Overview - icon */
+.icon-md {
+    font-size: 3.5rem;
 }
