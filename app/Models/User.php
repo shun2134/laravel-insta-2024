@@ -3,10 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -48,4 +49,23 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class)->latest();
     }
+
+    # To get all the followers of a user, but only the IDs
+    public function followers()
+    {
+        return $this->hasMany(Follow::class, 'following_id');
+    }
+
+    # To get all the users that the user is following, but only the IDs
+    public function following()
+    {
+        return $this->hasMany(Follow::class, 'follower_id');
+    }
+
+    # Return true if the Auth user already following the user
+    public function isFollowed()
+    {
+        return $this->followers()->where('follower_id', Auth::user()->id)->exists();
+    }
+
 }
