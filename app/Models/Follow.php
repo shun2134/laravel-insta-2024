@@ -11,7 +11,7 @@ class Follow extends Model
 
     public $timestamps = false;
 
-    # To get the info of a follower: name, email...
+    # To get the info of a follower: id, name, email...
     public function follower()
     {
         return $this->belongsTo(User::class, 'follower_id');

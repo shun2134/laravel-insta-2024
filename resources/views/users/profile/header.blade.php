@@ -44,18 +44,19 @@
             {{-- Posts --}}
             <div class="col-auto">
                 <a href="{{ route('profile.show', $user->id) }}" class="text-decoration-none text-dark">
-                    <strong>{{ $user->posts->count() }}</strong> posts
+                    {{-- condition ? true statement : false statement --}}
+                    <strong>{{ $user->posts->count() }}</strong> {{ $user->posts->count() == 1 ? 'post' : 'posts' }}
                 </a>
             </div>
             {{-- Followers --}}
             <div class="col-auto">
-                <a href="#" class="text-decoration-none text-dark">
-                    <strong>{{ $user->followers->count() }}</strong> followers
+                <a href="{{ route('profile.followers', $user->id) }}" class="text-decoration-none text-dark">
+                    <strong>{{ $user->followers->count() }}</strong> {{ $user->followers->count() == 1 ? 'follower' : 'followers' }}
                 </a>
             </div>
             {{-- Following --}}
             <div class="col-auto">
-                <a href="#" class="text-decoration-none text-dark">
+                <a href="{{ route('profile.following', $user->id) }}" class="text-decoration-none text-dark">
                     <strong>{{ $user->following->count() }}</strong> following
                 </a>
             </div>

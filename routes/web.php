@@ -44,6 +44,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/profile/{id}/show', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/{id}/followers', [ProfileController::class, 'followers'])->name('profile.followers');
+    Route::get('/profile/{id}/following', [ProfileController::class, 'following'])->name('profile.following');
 
     // LIKE
     Route::post('/like/{post_id}/store', [LikeController::class, 'store'])->name('like.store');

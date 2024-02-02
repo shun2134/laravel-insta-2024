@@ -6,7 +6,7 @@
     <div class="row gx-5">
             {{-- POSTS --}}
         <div class="col-8">
-            @forelse ($all_posts as $post)
+            @forelse ($home_posts as $post)
                 <div class="card mb-4">
                     {{-- Title --}}
                     @include('users.posts.contents.title')
