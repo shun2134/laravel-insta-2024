@@ -84,7 +84,12 @@
                                 </button>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    {{-- [SOON] Admin Controls --}}
+                                    {{-- Admin Controls --}}
+                                    <a href="{{ route('admin.users') }}" class="dropdown-item">
+                                        <i class="fa-solid fa-user-gear"></i> Admin
+                                    </a>
+
+                                    <hr class="dropdown-divider">
 
                                     {{-- Profile --}}
                                     <a href="{{ route('profile.show', Auth::user()->id) }}" class="dropdown-item">
@@ -113,7 +118,28 @@
             <div class="container">
                 <div class="row justify-content-center">
                     {{-- [SOON] Admin Controls --}}
-                    {{-- <div class="col-3"></div> --}}
+                    @if (request()->is('admin/*'))
+                    {{-- * = wild card --}}
+                        <div class="col-3">
+                            <div class="list-group">
+                            {{-- users --}}
+                            <a href="{{ route('admin.users') }}" class="list-group-item {{ request()->is('admin/*') ? 'active': '' }}">
+                                <i class="fa-solid fa-users"></i> Users
+                            </a>
+
+                            {{-- posts --}}
+                            <a href="#" class="list-group-item">
+                                <i class="fa-solid fa-newspaper"></i> Posts
+                            </a>
+
+                            {{-- categories --}}
+                            <a href="#" class="list-group-item">
+                                <i class="fa-solid fa-tags"></i> Categories
+                            </a>
+
+                            </div>
+                        </div>
+                    @endif
 
                     <div class="col-9">
                         @yield('content')

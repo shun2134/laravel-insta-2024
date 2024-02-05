@@ -1,5 +1,6 @@
 /* navbar icons */
 /* Followers page - avatar icon */
+/* Homepage - Suggestions - avatar icon */
 .icon-sm {
     font-size: 2rem;
 }
@@ -46,6 +47,7 @@
 
 /* Nav Avatar */
 /* Followers page - avater */
+/* Homepage - Suggestions - avatar icon */
 .avatar-sm {
     width: 2rem;
     height: 2rem;
@@ -53,6 +55,7 @@
 }
 
 /* Profile Overview - avatar */
+/* Admin Users - avatar */
 .avatar-md {
     width: 3.5rem;
     height: 3.5rem;
@@ -60,6 +63,7 @@
 }
 
 /* Profile Overview - icon */
+/* Admin Users - avatar */
 .icon-md {
     font-size: 3.5rem;
 }

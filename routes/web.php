@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +55,17 @@ Route::group(['middleware' => 'auth'], function(){
 
     // FOLLOW
     Route::post('/follow/{user_id}/store', [FollowController::class, 'store'])->name('follow.store');
-    Route::delete('/follow/{user_id}/destroy', [FollowController::class, 'destroy'])->name('follow.destroy');    
+    Route::delete('/follow/{user_id}/destroy', [FollowController::class, 'destroy'])->name('follow.destroy');
+    
+    // SUGGESTIONS
+    Route::get('/suggestions', [HomeController::class, 'suggestions'])->name('suggestions');
+
+    // ADMIN ROUTES/CONTROLS
+    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
+        /* USERS */
+        Route::get('/users', [UsersController::class, 'index'])->name('users'); // admin.users
+        Route::delete('/users/{id}/deactivate', [UsersController::class, 'deactivate'])->name('users.deactivate'); // admin.users.deactivate
+        Route::patch('/users/{id}/activate', [UsersController::class, 'activate'])->name('users.activate'); // admin.users.activate
+    });
 });
 
