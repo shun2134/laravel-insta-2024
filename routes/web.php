@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\UsersController;
 
 /*
@@ -66,6 +67,11 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/users', [UsersController::class, 'index'])->name('users'); // admin.users
         Route::delete('/users/{id}/deactivate', [UsersController::class, 'deactivate'])->name('users.deactivate'); // admin.users.deactivate
         Route::patch('/users/{id}/activate', [UsersController::class, 'activate'])->name('users.activate'); // admin.users.activate
+
+        /* POSTS */
+        Route::get('/posts', [PostsController::class, 'index'])->name('posts'); // admin.posts
+        Route::delete('/posts/{id}/hide', [PostsController::class, 'hide'])->name('posts.hide'); // admin.posts.hide
+        Route::patch('/posts/{id}/unhide', [PostsController::class, 'unhide'])->name('posts.unhide'); // admin.posts.unhide
     });
 });
 
