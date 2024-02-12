@@ -133,7 +133,7 @@
                             </a>
 
                             {{-- categories --}}
-                            <a href="#" class="list-group-item">
+                            <a href="{{ route('admin.categories') }}" class="list-group-item {{ request()->is('admin/categories') ? 'active': '' }}">
                                 <i class="fa-solid fa-tags"></i> Categories
                             </a>
 

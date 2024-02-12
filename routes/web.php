@@ -10,6 +10,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\PostsController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,12 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/posts', [PostsController::class, 'index'])->name('posts'); // admin.posts
         Route::delete('/posts/{id}/hide', [PostsController::class, 'hide'])->name('posts.hide'); // admin.posts.hide
         Route::patch('/posts/{id}/unhide', [PostsController::class, 'unhide'])->name('posts.unhide'); // admin.posts.unhide
+
+        /* CATEGORIES */
+        Route::get('/categories', [CategoriesController::class, 'index'])->name('categories'); // admin.categories
+        Route::post('/categories/store', [CategoriesController::class, 'store'])->name('categories.store'); // admin.categories.store
+        Route::patch('/categories/{id}/update', [CategoriesController::class, 'update'])->name('categories.update'); // admin.categories.update
+        Route::delete('/categories/{id}/destroy', [CategoriesController::class, 'destroy'])->name('categories.destroy'); // admin.categories.destroy
     });
 });
 
