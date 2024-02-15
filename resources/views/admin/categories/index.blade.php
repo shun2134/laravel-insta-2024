@@ -22,7 +22,7 @@
     </form>
 
     <div class="row">
-        <div class="col-7">
+        <div class="col-10">
             <table class="table table-hover align-middle bg-white border table-sm text-secondary text-center">
                 <thead class="table-warning small text-secondary">
                     <th>#</th>
