@@ -120,11 +120,12 @@
                         </div>
                 
                         {{-- no. likes --}}
-                        <div class="col-auto px-0">
-                            <span>{{ $post->likes->count() }}</span>
+                        <div class="col-auto px-0 ">
+                                <span>{{ $post->likes->count() }}</span>              
+                            </button>
                         </div>
-                
-                        {{-- categories --}}
+
+                         {{-- categories --}}
                         <div class="col text-end">
                             <div class="col text-end">
                                 @foreach ($post->categoryPost as $category_post)

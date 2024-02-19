@@ -31,6 +31,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+    Route::get('people', [HomeController::class, 'search'])->name('search');
 
     // POSTS
     Route::get('/post/create', [PostController::class, 'create'])->name('post.create');
@@ -68,6 +69,8 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/users', [UsersController::class, 'index'])->name('users'); // admin.users
         Route::delete('/users/{id}/deactivate', [UsersController::class, 'deactivate'])->name('users.deactivate'); // admin.users.deactivate
         Route::patch('/users/{id}/activate', [UsersController::class, 'activate'])->name('users.activate'); // admin.users.activate
+        Route::get('/people', [UsersController::class, 'search'])->name('users.search'); // admin.users.search
+
 
         /* POSTS */
         Route::get('/posts', [PostsController::class, 'index'])->name('posts'); // admin.posts

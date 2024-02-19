@@ -33,7 +33,7 @@
 
         {{-- No. likes --}}
         <div class="col-auto px-0">
-            <span>{{ $post->likes->count() }}</span>
+            <span>{{ $post->likes->count() }}</span>              
         </div>
 
         {{-- categories --}}

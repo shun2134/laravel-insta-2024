@@ -36,9 +36,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     {{-- [SOON] Serach bar here. Show it when user logs in. --}}
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
+                    @auth
+                        {{-- This will not show up in the admin side --}}
+                        @if (!request()->is('admin/*'))
+                            <ul class="navbar-nav ms-auto">
+                                <form action="{{ route('search') }}" style="width: 300px">
+                                    <input type="search" name="search" placeholder="Search..." class="form-control form-control-sm">
+                                </form>
+                            </ul>
+                        @endif
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -125,7 +132,7 @@
                         <div class="col-3">
                             <div class="list-group">
                             {{-- users --}}
-                            <a href="{{ route('admin.users') }}" class="list-group-item {{ request()->is('admin/users') ? 'active': '' }}">
+                            <a href="{{ route('admin.users') }}" class="list-group-item {{ request()->is('admin/users') || request()->is('admin/people') ? 'active': '' }}">
                                 <i class="fa-solid fa-users"></i> Users
                             </a>
 
